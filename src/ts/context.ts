@@ -1,18 +1,16 @@
 import { State } from './state.js';
 import { SceneController } from './sceneController.js';
-import { IdleState } from './idleState.js';
-import { GameData } from './gameData.js';
 import { Translator } from './translator.js';
 import { SoundPlayer } from './soundPlayer.js';
 import { SimplePhysicsController } from './simplePhysicsController.js';
-import { GameSettings } from './gameSettings.js';
 import { debugPrint } from './runtime.js';
+import { CompanyLogoState } from './companyLogoState.js'
+import { GameSettings } from './gameSettings.js'
 
 export class Context {
   public isRunning: boolean = false
   public sceneController: SceneController
   public translator = new Translator()
-  public gameData: GameData
 
   readonly canvas?: HTMLCanvasElement | null = document.querySelector("canvas")
   private state: State
@@ -23,14 +21,13 @@ export class Context {
     debugEnabled: boolean
   ) {
       this.debugEnabled = debugEnabled; 
-      this.gameData = new GameData();
-      this.state = new IdleState(
-        "Idle State",
+      this.state = new CompanyLogoState(
+        "Company Logo State",
         this
       );
 
       if (!this.canvas || this.canvas == undefined) {
-        this.raiseCriticalError("1Canvas in NULL!!!!");
+        this.raiseCriticalError("Canvas in NULL!!!!");
       }
       const canvas = this.canvas!;
 

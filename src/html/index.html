@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>Flame Steel Engine 2 Project</title>
+<title>Muskfield</title>
 <link rel="stylesheet" type="text/css" href="style.css">
-<script type="importmap">
+<!--<script type="importmap">
   {
     "imports": {
       "dat.gui": "./build/dat.gui/dat.gui.module.js",
@@ -12,7 +12,7 @@
       "dat.gui.module.js.map": "./build/dat.gui/dat.gui.module.js.map"
     }
   }
-</script>
+</script>-->
 </head>
 <body>
   <div class="companyLogoContainer">
@@ -20,12 +20,12 @@
     <tr>
       <td style="width: 5%;"></td>
       <td>
-        <img class="companyLogo" onload="document.global_gameplay_companyLogoLoaded = true" onmousedown="if (event.preventDefault) event.preventDefault()" src="./assets/com.demensdeum.company.logo.texture.svg"/>
+        <img class="companyLogo" onload="document.global_gameplay_companyLogoLoaded = true" onmousedown="if (event.preventDefault) event.preventDefault()" src="com.demensdeum.company.logo.texture.svg"/>
       </td>
       <td style="width: 5%;"></td>
     </tr>
     </table>
   </div>
-  <script type="module" src="./build/main.js"></script>
-  <script src="build/eruda/eruda.js"></script>
+  <script type="module" src="main.js"></script>
+  <script src="eruda.js"></script>
 </body>

@@ -1,4 +1,3 @@
-import { LocaleSelectorState } from "./localeSelectorState.js";
 import { State } from "./state.js";
 import { Utils } from "./utils.js";
 
@@ -18,14 +17,14 @@ export class CompanyLogoState extends State {
         if (diffMilliseconds > this.switchMillisecondsTimeout) {
             Utils.hideHtmlElement({name:"companyLogoContainer"})
 
-            const localeSelectorState = new LocaleSelectorState(
-                "Locale Selector State",
-                this.context
-            )
+            // const localeSelectorState = new LocaleSelectorState(
+            //     "Locale Selector State",
+            //     this.context
+            // )
             // @ts-ignore
             document.global_gameplay_localeSelectorState = localeSelectorState
 
-            this.context.transitionTo(localeSelectorState)
+            //this.context.transitionTo(localeSelectorState)
         }
         else if (companyLogoLoaded == true) {
             Utils.showHtmlElement({name: "companyLogoContainer"});

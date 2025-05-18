@@ -7,8 +7,8 @@ export class Utils {
             name: string
         }
     ) {
-        if ((document.getElementsById(args.name)[0] as HTMLElement).style.display != "block") {
-            (document.getElementsById(args.name)[0] as HTMLElement).style.display = "block"
+        if ((document.getElementById(args.name) as HTMLElement).style.display != "block") {
+            (document.getElementById(args.name) as HTMLElement).style.display = "block"
         }
     }
 
@@ -17,8 +17,8 @@ export class Utils {
             name: string
         }
     ) {
-        if ((document.getElementsById(args.name)[0] as HTMLElement).style.display != "none") {
-            (document.getElementsById(args.name)[0] as HTMLElement).style.display = "none"
+        if ((document.getElementById(args.name) as HTMLElement).style.display != "none") {
+            (document.getElementById(args.name) as HTMLElement).style.display = "none"
         }
     }
 
@@ -27,8 +27,8 @@ export class Utils {
             name: string
         }
     ) {
-        if ((document.getElementsById(args.name)[0] as HTMLElement).style.display != "flex") {
-            (document.getElementsById(args.name)[0] as HTMLElement).style.display = "flex"
+        if ((document.getElementById(args.name) as HTMLElement).style.display != "flex") {
+            (document.getElementById(args.name) as HTMLElement).style.display = "flex"
         }
     }
 

@@ -34,8 +34,6 @@ import { debugPrint, raiseCriticalError } from "./runtime.js"
 import { float } from "./types.js"
 import { Controls } from "./controls.js"
 import { Paths } from "./paths.js"
-import { WeatherControllerDelegate } from "./weatherControllerDelegate.js"
-import { WeatherController } from "./weatherController.js"
 import { int } from "./types.js"
 import { SceneObjectCommandTeleport } from "./sceneObjectCommandTeleport.js"
 import { SceneObjectCommandIdle } from "./sceneObjectCommandIdle.js"
@@ -63,7 +61,6 @@ export class SceneController implements
                                         ControlsDelegate,
                                         PhysicsControllerDelegate,
                                         SimplePhysicsControllerDelegate,
-                                        WeatherControllerDelegate,
                                         DecorControlsDataSource,
                                         ObjectsPickerControllerDelegate {
 
@@ -109,8 +106,6 @@ export class SceneController implements
     public gameSettings: GameSettings;
 
     private flyMode: boolean = false;
-
-    private weatherController?: WeatherController;
 
     public physicsEnabled: boolean;
     public delegate: SceneControllerDelegate | null = null
@@ -531,13 +526,6 @@ export class SceneController implements
         return this.canMoveBackward;
     }
 
-    weatherControllerDidRequireToAddInstancedMeshToScene(
-        _: WeatherController,
-        instancedMesh: any
-    ): void {
-        this.scene.add(instancedMesh);
-    }
-
     public addCommand(
         name: string,
         type: string,
@@ -665,7 +653,6 @@ export class SceneController implements
             }
             this.physicsController.step(delta)
         }
-        this.weatherController?.step(delta)
 
         if (this.global_maximoMixer != null) {
             this.global_maximoMixer.update(delta);
@@ -881,18 +868,18 @@ export class SceneController implements
                                    isTop: true,
                                    stickToCamera: true
                                }
-        });
-        debugPrint(args.text);
-        debugPrint(args.okCallback);
-
-        const okCallBackCopy = args.okCallback;
+        })
+        debugPrint(args.text)
+        debugPrint(args.okCallback)
 
         const autoCloseTimeout = setTimeout(() => {
             closeWindow();
             if (typeof args.okCallback === 'function') {
                 args.okCallback();
             }
-        }, 1500);
+        }, 1500)
+
+        debugPrint(autoCloseTimeout)
     }
 
     public removeCssObjectWithName(name: string) {
